@@ -82,7 +82,7 @@ export default function Home() {
                 Contact Me
               </a>
               <a
-                href="/Lokesh S - Resume.pdf"
+                href="/Lokesh_resume.pdf"
                 className="inline-flex items-center gap-2 rounded-xl border border-black/15 px-5 py-3 text-sm font-semibold transition hover:border-orange-300 dark:border-blue-500/40 dark:hover:border-blue-300"
               >
                 <Download size={16} />

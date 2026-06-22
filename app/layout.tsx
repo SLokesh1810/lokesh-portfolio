@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lokesh-portfolio.vercel.app"),
+  metadataBase: new URL("https://lokesh-portfolio-umber-one.vercel.app/"),
   title: "Lokesh S | Portfolio",
   description:
     "Portfolio of Lokesh S, an ML and backend engineer building scalable AI systems, data pipelines, and production APIs.",
