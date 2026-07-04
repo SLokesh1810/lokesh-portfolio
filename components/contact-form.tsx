@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { personalInfo } from "@/data/portfolio-data";
 
 type FormState = {
   name: string;
@@ -16,42 +17,46 @@ const initialForm: FormState = {
 
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialForm);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("loading");
     setErrorMessage("");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
 
-      const data = (await response.json()) as { error?: string };
-
-      if (!response.ok) {
-        throw new Error(data.error ?? "Failed to send message.");
-      }
-
-      setForm(initialForm);
-      setStatus("success");
-    } catch (error) {
+    if (!name || !email || !message) {
       setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Failed to send message.");
+      setErrorMessage("Name, email, and message are required.");
+      return;
     }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const subject = `Portfolio message from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    setForm(initialForm);
+    setStatus("success");
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex h-full flex-col gap-4 rounded-2xl border border-orange-100 bg-white p-6 shadow-sm dark:border-blue-500/25 dark:bg-zinc-950"
+      className="flex h-full flex-col gap-4 rounded-2xl border border-blue-500/25 bg-zinc-950 p-6 shadow-sm"
     >
-      <p className="text-sm text-zinc-600 dark:text-zinc-300">
-        Send a message directly from here and I&apos;ll reply to your email.
+      <p className="text-sm text-zinc-300">
+        Fill in your details and send via Gmail. A compose window opens in a new tab with your
+        message pre-filled.
       </p>
 
       <input
@@ -61,7 +66,7 @@ export function ContactForm() {
         required
         value={form.name}
         onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-        className="rounded-xl border border-black/10 px-4 py-3 text-sm outline-none transition focus:border-orange-400 dark:border-blue-500/35 dark:bg-zinc-900 dark:focus:border-blue-300"
+        className="rounded-xl border border-blue-500/35 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-blue-300"
       />
       <input
         type="email"
@@ -70,7 +75,7 @@ export function ContactForm() {
         required
         value={form.email}
         onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
-        className="rounded-xl border border-black/10 px-4 py-3 text-sm outline-none transition focus:border-orange-400 dark:border-blue-500/35 dark:bg-zinc-900 dark:focus:border-blue-300"
+        className="rounded-xl border border-blue-500/35 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-blue-300"
       />
       <textarea
         name="message"
@@ -79,24 +84,23 @@ export function ContactForm() {
         required
         value={form.message}
         onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
-        className="min-h-[140px] flex-1 resize-none rounded-xl border border-black/10 px-4 py-3 text-sm outline-none transition focus:border-orange-400 dark:border-blue-500/35 dark:bg-zinc-900 dark:focus:border-blue-300"
+        className="min-h-[140px] flex-1 resize-none rounded-xl border border-blue-500/35 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-blue-300"
       />
 
       {status === "success" && (
-        <p className="text-sm font-medium text-green-700 dark:text-green-400">
-          Message sent successfully. I&apos;ll get back to you soon.
+        <p className="text-sm font-medium text-green-400">
+          Gmail compose opened. Send the message from there and I&apos;ll reply to your email.
         </p>
       )}
       {status === "error" && (
-        <p className="text-sm font-medium text-red-600 dark:text-red-400">{errorMessage}</p>
+        <p className="text-sm font-medium text-red-400">{errorMessage}</p>
       )}
 
       <button
         type="submit"
-        disabled={status === "loading"}
-        className="rounded-xl bg-orange-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-500"
+        className="rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
       >
-        {status === "loading" ? "Sending..." : "Send Message"}
+        Send via Gmail
       </button>
     </form>
   );

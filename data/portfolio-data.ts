@@ -15,16 +15,16 @@ export const cpProfiles = {
   leetcode: {
     platform: "LeetCode",
     profileUrl: "https://leetcode.com/u/S_Lokesh_18/",
-    totalSolved: 269,
-    contestRating: 1522,
-    contestsAttended: 18,
+    totalSolved: 320,
+    contestRating: 1578,
+    contestsAttended: 21,
   },
   codechef: {
     platform: "CodeChef",
     profileUrl: "https://www.codechef.com/users/slokesh1810",
-    totalSolved: 80,
-    contestRating: 1325,
-    contestsAttended: 13,
+    totalSolved: 88,
+    contestRating: 1386,
+    contestsAttended: 15,
   },
 } as const;
 
@@ -106,6 +106,11 @@ export const projects = [
   },
 ] as const;
 
+export const projectCategories = [
+  "All",
+  ...Array.from(new Set(projects.map((project) => project.category))),
+] as const;
+
 export const skills = [
   {
     title: "Programming",
@@ -170,7 +175,7 @@ export const skills = [
 
 export const publication = {
   title: "Smart Parking Safety and Surveillance System Using Computer Vision",
-  venue: "Intelligent Transportation and Smart Systems, IGI Global (2025)",
+  venue: "Intelligent Transportation and Smart Systems, IGI Global (2026)",
   doi: "https://doi.org/10.4018/979-8-3373-4277-1.ch003",
   details:
     "Proposed a multi-view smart parking pipeline integrating computer vision, IoT, and blockchain, with YOLO and OpenCV for real-time pedestrian and vehicle monitoring.",

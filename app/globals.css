@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #18181b;
-  --surface: #ffffff;
+  --background: #020617;
+  --foreground: #e5e7eb;
+  --surface: #030712;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -12,12 +13,6 @@
   --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-.dark {
-  --background: #020617;
-  --foreground: #e5e7eb;
-  --surface: #030712;
 }
 
 body {
@@ -31,9 +26,5 @@ html {
 }
 
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
-}
-
-.dark ::selection {
   background: rgba(59, 130, 246, 0.35);
 }

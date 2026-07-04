@@ -41,7 +41,7 @@ function DonutChart({
           fill="none"
           stroke="currentColor"
           strokeWidth={strokeWidth}
-          className="text-zinc-100 dark:text-zinc-800"
+          className="text-zinc-800"
         />
         {segments.map((segment, i) => {
           if (segment.value === 0) return null;
@@ -66,8 +66,8 @@ function DonutChart({
         })}
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">{total}</span>
-        <span className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        <span className="text-2xl font-bold text-zinc-100">{total}</span>
+        <span className="text-[10px] font-medium uppercase tracking-wider text-zinc-400">
           Solved
         </span>
       </div>
@@ -89,9 +89,9 @@ export function CpProfilePanel() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.1 }}
-      className="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm dark:border-blue-500/25 dark:bg-zinc-950"
+      className="rounded-2xl border border-blue-500/25 bg-zinc-950 p-6 shadow-sm"
     >
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
         DSA / CP Profile
       </p>
 
@@ -102,7 +102,7 @@ export function CpProfilePanel() {
         />
 
         <div className="min-w-0 flex-1 space-y-4">
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-600 dark:text-zinc-300">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-300">
             <span className="inline-flex items-center gap-1.5">
               <span className="size-2 rounded-full" style={{ backgroundColor: PLATFORM_COLORS.leetcode }} />
               LeetCode {leetcode.totalSolved}
@@ -115,15 +115,15 @@ export function CpProfilePanel() {
 
           {platforms.map((platform) => (
             <div key={platform.platform} className="text-sm">
-              <p className="font-semibold text-zinc-900 dark:text-zinc-100">{platform.platform}</p>
-              <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              <p className="font-semibold text-zinc-100">{platform.platform}</p>
+              <p className="mt-1 text-xs text-zinc-400">
                 Rating {platform.contestRating} · {platform.contestsAttended} contests
               </p>
               <a
                 href={platform.profileUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-orange-700 hover:underline dark:text-blue-300"
+                className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-blue-300 hover:underline"
               >
                 View profile <ArrowUpRight size={12} />
               </a>
