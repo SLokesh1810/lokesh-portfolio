@@ -31,17 +31,6 @@ Machine learning-based mental health assessment system using PHQ-9 data and depl
 
 Data science project focused on extracting insights from high-dimensional semiconductor manufacturing datasets.
 
-## Competitive Programming
-
-* LeetCode: 250+ Problems Solved
-* LeetCode Rating: 1500+
-* CodeChef Rating: 1300+
-
-## Publication
-
-**Smart Parking Safety and Surveillance System Using Computer Vision**
-
-Published in *Intelligent Transportation and Smart Systems (IGI Global, 2025)*.
 
 ## Tech Stack
 
