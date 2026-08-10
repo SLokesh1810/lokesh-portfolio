@@ -15,16 +15,16 @@ export const cpProfiles = {
   leetcode: {
     platform: "LeetCode",
     profileUrl: "https://leetcode.com/u/S_Lokesh_18/",
-    totalSolved: 320,
-    contestRating: 1578,
-    contestsAttended: 21,
+    totalSolved: 370,
+    contestRating: 1666,
+    contestsAttended: 26,
   },
   codechef: {
     platform: "CodeChef",
     profileUrl: "https://www.codechef.com/users/slokesh1810",
-    totalSolved: 88,
-    contestRating: 1386,
-    contestsAttended: 15,
+    totalSolved: 100,
+    contestRating: 1416,
+    contestsAttended: 18,
   },
 } as const;
 
@@ -104,6 +104,27 @@ export const projects = [
     link: "https://github.com/SLokesh1810/StudyOfSemiconductors-DSproject-",
     image: "/placeholders/project-semiconductor.svg",
   },
+  {
+    title: "Smart Parking Safety and Surveillance System",
+    category: "Computer Vision",
+    description:
+      "Developed a research-oriented computer vision prototype for smart parking and vehicle surveillance. Implemented a multi-stage vision pipeline using YOLOv8 for vehicle detection, a YOLOv11-based license plate detector for plate localization, and EasyOCR for license plate recognition. The system processes road and parking-lot images, isolates individual vehicles and license plates, performs OCR, and displays recognized plate information with confidence scores.",
+    tech: [
+      "Python",
+      "YOLOv8",
+      "YOLOv11",
+      "OpenCV",
+      "EasyOCR",
+      "PyTorch",
+      "Computer Vision",
+      "Object Detection"
+    ],
+
+    impact:
+      "Built and validated an end-to-end ALPR pipeline as the Computer Vision component of a published Smart Parking research project, demonstrating vehicle detection, license plate localization, and OCR-based identification.",
+    link: "https://github.com/SLokesh1810/smart_parking_system",
+    image: "/placeholders/project-smart-parking.svg",
+  }
 ] as const;
 
 export const projectCategories = [
@@ -114,7 +135,7 @@ export const projectCategories = [
 export const skills = [
   {
     title: "Programming",
-    items: ["Python", "Java"],
+    items: ["Python", "Java", "SQL"],
     icon: "code2",
     image: "/placeholders/skill-programming.svg",
   },
@@ -126,6 +147,7 @@ export const skills = [
       "Model Evaluation",
       "Classical ML Algorithms",
       "ML Pipelines",
+      "OpenCV",
     ],
     icon: "brain",
     image: "/placeholders/skill-ml.svg",
